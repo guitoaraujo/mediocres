@@ -7,7 +7,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @pearl.user %>
+  <%= @pearl.game.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pearl.user.name %>
 </p>
 
 <%= link_to 'Edit', edit_pearl_path(@pearl) %> |

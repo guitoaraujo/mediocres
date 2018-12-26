@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_26_193155) do
+ActiveRecord::Schema.define(version: 2018_12_26_201238) do
+
+  create_table "games", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
 
   create_table "pearls", force: :cascade do |t|
     t.text "quote"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "game_id"
+    t.index ["game_id"], name: "index_pearls_on_game_id"
     t.index ["user_id"], name: "index_pearls_on_user_id"
   end
 

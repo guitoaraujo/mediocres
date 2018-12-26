@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :game_id %>
+    <%= form.select :game_id, @games.map { |game| [game.title, game.id] } %>
+  </div>
+
+  <div class="field">
     <%= form.label :user_id %>
     <%= form.select :user_id, @users.map { |user| [user.name, user.id] } %>
   </div>

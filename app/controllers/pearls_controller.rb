@@ -1,7 +1,8 @@
 class PearlsController < ApplicationController
   before_action :set_pearl, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
-  before_action :set_users, only: [:new, :edit]
+  before_action :set_users, only: [:new, :create, :edit, :update]
+  before_action :set_games, only: [:new, :create, :edit, :update]
 
   # GET /pearls
   # GET /pearls.json
@@ -72,9 +73,13 @@ class PearlsController < ApplicationController
     def set_users
       @users = User.all
     end
+  
+    def set_games
+      @games = Game.all
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pearl_params
-      params.require(:pearl).permit(:quote, :user_id)
+      params.require(:pearl).permit(:quote, :game_id, :user_id)
     end
 end
